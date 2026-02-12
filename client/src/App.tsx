@@ -22,7 +22,8 @@ function App() {
   };
 
   const handleBuy = async () => {
-    await axios.post('https://your-backend-url.onrender.com/trade', {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    await axios.post(`${API_URL}/trade`, {
       userId: 1,
       symbol: ticker,
       shares: 10,
