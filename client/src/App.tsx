@@ -1,11 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 
+
+interface ChartData {
+  date: string;
+  price: number;
+}
+
 function App() {
   const [ticker, setTicker] = useState('AAPL');
-  const [chartData, setChartData] = useState([]);
+  const [chartData, setChartData] = useState<ChartData[]>([]);
   const [price, setPrice] = useState(0);
+
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
   const fetchStock = async () => {
     const API_KEY = 'WABKA2HFWI3VUNGV';
@@ -22,7 +30,6 @@ function App() {
   };
 
   const handleBuy = async () => {
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
     await axios.post(`${API_URL}/trade`, {
       userId: 1,
       symbol: ticker,
