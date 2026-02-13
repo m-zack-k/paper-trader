@@ -29,4 +29,25 @@ To run this project locally:
 
 **1. Clone the repository**
 ```bash
-git clone [https://github.com/m-zack-k/paper-trader.git](https://github.com/m-zack-k/paper-trader.git)
+git clone https://github.com/m-zack-k/paper-trader.git
+```
+
+**2. Setup Backend
+```bash
+cd server
+npm install
+# Create a .env file with your DATABASE_URL and PORT=3001
+npm run build
+npm start
+```
+
+**3. Setup Frontend
+```bash
+cd ../client
+npm install
+# Create a .env file with VITE_API_URL=http://localhost:3001
+npm run dev
+```
+
+## What's next
+Implement Sell functionality with database constraints
